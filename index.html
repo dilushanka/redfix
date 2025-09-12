@@ -1,233 +1,578 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="RedFix - Fast and reliable mobile phone repair and accessories shop in Sri Lanka. Get expert display replacements, battery changes, and software fixes with warranty. Visit RedFix today!">
-  <meta name="keywords" content="mobile repair Sri Lanka, phone repair shop, display replacement, battery replacement, RedFix, mobile accessories, phone repair near me">
-  <meta name="author" content="RedFix">
+  <!-- Basic meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>RedFix | Mobile Phone Repair & Accessories in Sri Lanka</title>
+  <meta name="description" content="RedFix - Fast, reliable mobile phone repairs in Dambulla, Sri Lanka. Display replacements, battery changes, software fixes & warranty. Call +94 78 927 4648." />
+  <meta name="keywords" content="mobile repair Sri Lanka, phone repair Dambulla, display replacement, battery change, phone unlocking, RedFix" />
+  <meta name="author" content="RedFix" />
+  <link rel="canonical" href="https://redfix.lk/" />
+  <meta name="robots" content="index,follow" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="RedFix - Mobile Repair & Accessories">
-  <meta property="og:description" content="Fast. Reliable. RedFix. Trusted mobile repair & accessories shop in Sri Lanka.">
-  <meta property="og:image" content="img/logo.png">
-  <meta property="og:url" content="https://redfix.lk">
-  <meta property="og:type" content="website">
+  <meta property="og:title" content="RedFix - Mobile Phone Repair & Accessories" />
+  <meta property="og:description" content="Fast. Reliable. RedFix. Trusted mobile repair & accessories shop in Sri Lanka." />
+  <meta property="og:image" content="https://redfix.lk/img/logo.png" />
+  <meta property="og:url" content="https://redfix.lk/" />
+  <meta property="og:type" content="local_business" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RedFix - Mobile Phone Repair & Accessories" />
+  <meta name="twitter:description" content="Fast. Reliable. RedFix. Trusted mobile repair & accessories shop in Sri Lanka." />
+  <meta name="twitter:image" content="https://redfix.lk/img/logo.png" />
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-  <!-- Google Fonts -->
+  <!-- Preload key font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+  <!-- Bootstrap (CSS) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <!-- Animate.css (small, only if needed) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
+    :root{
+      --brand-1:#2E5077;
+      --brand-2:#4DA1A9;
+      --accent:#79D7BE;
+      --muted:#f6f6f6;
+      --radius:14px;
     }
-    header {
-      background: linear-gradient(135deg, #2E5077, #4DA1A9);
-      color: white;
-      text-align: center;
-      padding: 5rem 1rem;
+    html,body{height:100%}
+    body{
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      line-height:1.5;
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      scroll-behavior:smooth;
+      background:#fff;
     }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
+    /* NAV */
+    .navbar{background:var(--brand-1)}
+    .navbar .nav-link{color:#fff !important;font-weight:600}
+    .navbar .nav-link:hover{color:var(--accent) !important}
+    .navbar-brand{color:#fff;font-weight:800}
+    /* HERO */
+    header.hero{
+      background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
+      color:#fff;padding:4.5rem 1rem;text-align:center;
+      border-bottom-left-radius:40px;border-bottom-right-radius:40px;
     }
-    header p {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
+    header.hero h1{font-size:2.6rem;font-weight:800}
+    header.hero p{font-size:1.125rem;margin-bottom:1.25rem}
+    .btn-cta{background:var(--accent);color:var(--brand-1);border-radius:50px;padding:.7rem 1.4rem;font-weight:700}
+    .btn-ghost{background:transparent;border:2px solid rgba(255,255,255,.18);color:#fff;border-radius:50px;padding:.55rem 1.2rem}
+    /* OFFER BAR */
+    .offer-bar{background:linear-gradient(90deg,#ffd54a,#ff8a65);color:#111;padding:.6rem;font-weight:700;border-radius:10px}
+    /* CARDS */
+    .card{border-radius:var(--radius);box-shadow:0 8px 30px rgba(46,80,119,0.06)}
+    /* Trust badges */
+    .badge-trust{background:#fff;border-radius:12px;padding:.6rem 1rem;display:inline-flex;align-items:center;gap:.6rem;border:1px solid rgba(0,0,0,.06)}
+    /* Before/After */
+    .ba-wrap{position:relative;border-radius:var(--radius);overflow:hidden;min-height:240px}
+    .ba-after{position:absolute;top:0;left:0;bottom:0;width:50%;overflow:hidden}
+    .ba-after img{height:100%;width:100%;object-fit:cover}
+    .ba-before img{height:100%;width:100%;object-fit:cover}
+    .ba-handle{position:absolute;left:calc(50% - 18px);top:50%;transform:translateY(-50%);z-index:5;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;border:2px solid rgba(0,0,0,.08)}
+    /* Sticky CTA */
+    .whatsapp-cta{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 22px rgba(37,211,102,.12);z-index:9999}
+    /* Blog preview */
+    .blog-card img{height:160px;object-fit:cover;border-radius:10px}
+    /* Footer */
+    footer{background:var(--brand-1);color:#fff;padding:2rem 1rem}
+    footer a{color:var(--accent);text-decoration:none}
+    /* Responsive */
+    @media(min-width:992px){
+      header.hero{padding:6.5rem 1rem}
+      header.hero h1{font-size:3.2rem}
     }
-    .btn-custom {
-      background: #79D7BE;
-      color: #2E5077;
-      font-weight: 600;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      transition: 0.3s ease;
-    }
-    .btn-custom:hover {
-      background: #4DA1A9;
-      color: #fff;
-      transform: scale(1.05);
-    }
-    section h2 {
-      font-weight: 700;
-      margin-bottom: 2rem;
-      text-align: center;
-      color: #2E5077;
-    }
-    .card {
-      border: none;
-      border-radius: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    footer {
-      background: #2E5077;
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    .faq .accordion-button {
-      font-weight: 600;
-      color: #2E5077;
-    }
-    .map iframe {
-      border-radius: 15px;
-    }
+    /* Small utilities */
+    .muted{color:#6b6b6b}
   </style>
 </head>
 <body>
-
-  <!-- Hero -->
-  <header class="animate__animated animate__fadeIn">
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
     <div class="container">
-      <h1 class="animate__animated animate__fadeInDown">Fast. Reliable. RedFix.</h1>
-      <p class="animate__animated animate__fadeInUp">Trusted Mobile Phone Repair & Accessories Shop in Sri Lanka</p>
-      <a href="#contact" class="btn btn-custom animate__animated animate__pulse animate__infinite">Contact Us</a>
+      <a class="navbar-brand" href="#">RedFix</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#offers">Offers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Before & After</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog">Tips & Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="offer-bar mb-3 d-inline-block animate__animated animate__pulse animate__infinite" aria-hidden="true">💥 This month: 10% off Display Replacements — Free Diagnostics!</div>
+      <h1 class="animate__animated animate__fadeInDown">Fast. Reliable. RedFix — Phone Repair in Dambulla</h1>
+      <p class="animate__animated animate__fadeInUp">Display replacements, battery changes, software fixes & genuine accessories — same-day service with warranty.</p>
+      <div class="d-flex justify-content-center gap-3">
+        <a class="btn btn-cta me-2" href="#contact">Book Repair</a>
+        <a class="btn btn-ghost" href="tel:+94789274648">Call +94 78 927 4648</a>
+      </div>
     </div>
   </header>
 
-  <!-- About -->
-  <section id="about" class="py-5">
-    <div class="container">
-      <h2>About RedFix</h2>
-      <p class="text-center mx-auto col-lg-8">At <strong>RedFix</strong>, we specialize in quick and reliable mobile phone repairs, display replacements, battery changes, software fixes, and premium mobile accessories. With years of expertise, we are trusted by thousands of customers across Sri Lanka.</p>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="py-5 bg-light">
-    <div class="container">
-      <h2>Our Services</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card p-4 text-center shadow-sm h-100 animate__animated animate__fadeInUp">
-            <h4>📱 Display Replacement</h4>
-            <p>Original & compatible displays with warranty. Fast replacement guaranteed.</p>
+  <main>
+    <!-- About / Trust -->
+    <section id="about" class="py-5">
+      <div class="container">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-6">
+            <h2>About RedFix - Mobile Phone Repair in Sri Lanka</h2>
+            <p>At <strong>RedFix</strong>, we deliver quick, reliable repairs for phones from all major brands. Located on Kandalama Rd, Athuparayaya, Dambulla — serving locals and travellers.</p>
+            <div class="d-flex gap-2 mt-3">
+              <div class="badge-trust"><i class="bi bi-shield-check"></i> Warranty on Repairs</div>
+              <div class="badge-trust"><i class="bi bi-clock-history"></i> Same-day Service</div>
+              <div class="badge-trust"><i class="bi bi-award"></i> Certified Technicians</div>
+            </div>
+            <p class="mt-3 muted">Open: Mon–Sat 8:00–19:00 • Walk-ins welcome • Free diagnostics for limited time</p>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-4 text-center shadow-sm h-100 animate__animated animate__fadeInUp animate__delay-1s">
-            <h4>🔋 Battery Replacement</h4>
-            <p>High-quality batteries to restore your phone’s performance & backup.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-4 text-center shadow-sm h-100 animate__animated animate__fadeInUp animate__delay-2s">
-            <h4>⚙️ Software & Unlocking</h4>
-            <p>Fix boot loops, software issues, unlocking & data recovery solutions.</p>
+          <div class="col-lg-6 text-center">
+            <img src="/img/team.jpg" alt="RedFix technicians repairing a phone" class="img-fluid rounded-3 shadow-sm" loading="lazy" width="700" height="420">
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Why Choose Us -->
-  <section id="why" class="py-5">
-    <div class="container">
-      <h2>Why Choose RedFix?</h2>
-      <div class="row text-center">
-        <div class="col-md-2 col-6">✔️ Expert Technicians</div>
-        <div class="col-md-2 col-6">✔️ Warranty on Repairs</div>
-        <div class="col-md-2 col-6">✔️ Affordable Prices</div>
-        <div class="col-md-2 col-6">✔️ Same-Day Service</div>
-        <div class="col-md-2 col-6">✔️ Genuine Accessories</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section id="testimonials" class="py-5 bg-light">
-    <div class="container">
-      <h2>What Our Customers Say</h2>
-      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner text-center">
-          <div class="carousel-item active">
-            <p class="lead">“Best repair shop in Dambulla! Fixed my Redmi display in under 30 minutes.” – Tharindu</p>
+    <!-- Services -->
+    <section id="services" class="py-5 bg-light">
+      <div class="container">
+        <h2>Our Services</h2>
+        <div class="row g-4 mt-2">
+          <div class="col-md-4">
+            <article class="card p-4 h-100">
+              <div class="d-flex align-items-start gap-3">
+                <div><i class="bi bi-phone-fill fs-2" aria-hidden="true"></i></div>
+                <div>
+                  <h5>Display Replacement</h5>
+                  <p class="muted mb-0">Original & compatible displays with warranty. Quick diagnostics & same-day replacement.</p>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="carousel-item">
-            <p class="lead">“Affordable and trustworthy. Got my Samsung battery replaced with warranty.” – Nadeesha</p>
+          <div class="col-md-4">
+            <article class="card p-4 h-100">
+              <div class="d-flex align-items-start gap-3">
+                <div><i class="bi bi-battery-full fs-2" aria-hidden="true"></i></div>
+                <div>
+                  <h5>Battery Replacement</h5>
+                  <p class="muted mb-0">High-quality batteries to restore performance and backup. Health check included.</p>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="carousel-item">
-            <p class="lead">“Highly recommend RedFix. Great service and friendly staff.” – Kasun</p>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="py-5">
-    <div class="container">
-      <h2>Frequently Asked Questions</h2>
-      <div class="accordion" id="faqAccordion">
-        <div class="accordion-item">
-          <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">How long does a repair take?</button></h2>
-          <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">Most repairs are done within 30–60 minutes.</div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">Do you provide a warranty?</button></h2>
-          <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">Yes, we offer warranty for display, battery & accessory replacements.</div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">Do I need an appointment?</button></h2>
-          <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">No, walk-ins are always welcome!</div>
+          <div class="col-md-4">
+            <article class="card p-4 h-100">
+              <div class="d-flex align-items-start gap-3">
+                <div><i class="bi bi-wrench-adjustable fs-2" aria-hidden="true"></i></div>
+                <div>
+                  <h5>Software & Unlocking</h5>
+                  <p class="muted mb-0">Fix boot loops, software issues, unlocking & data recovery solutions with secure handling.</p>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-5 bg-light">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <p><strong>Address:</strong> Kandalama Rd, Athuparayaya, Dambulla, Sri Lanka</p>
-          <p><strong>Phone:</strong> <a href="tel:+94789274648">+94 78 927 4648</a></p>
-          <p><strong>Email:</strong> <a href="mailto:info@redfix.lk">info@redfix.lk</a></p>
-        </div>
-        <div class="col-md-6">
-          <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22357.334396250968!2d80.66131965470524!3d7.8682904531851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afca56c10c7852d%3A0x8dc0c8ad90ad4428!2sRedFix!5e0!3m2!1sen!2slk!4v1756868649902!5m2!1sen!2slk" width="100%" height="300" allowfullscreen="" loading="lazy"></iframe>
+    <!-- Offers / Promotions -->
+    <section id="offers" class="py-5">
+      <div class="container">
+        <h2>Special Offers</h2>
+        <div class="row g-4 mt-2">
+          <div class="col-md-6">
+            <div class="card p-4">
+              <h5>10% Off Display Replacements</h5>
+              <p class="muted">Limited time — book online or mention the offer in-store. Free diagnostics included.</p>
+              <a href="#contact" class="btn btn-cta">Claim Offer</a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-4">
+              <h5>Battery Health Check + Discount</h5>
+              <p class="muted">Get a free battery health check and receive a discount on replacements this month.</p>
+              <a href="#contact" class="btn btn-ghost">Book Health Check</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Before & After -->
+    <section id="gallery" class="py-5 bg-light">
+      <div class="container">
+        <h2>Before & After — Real Repairs</h2>
+        <p class="muted text-center">Slide the handle to compare cracked screens and repaired phones.</p>
+
+        <!-- One example before/after — duplicate for more -->
+        <div class="row justify-content-center mt-4">
+          <div class="col-lg-8">
+            <div class="ba-wrap" id="ba1" aria-label="Before and after image comparison">
+              <div class="ba-before"><img src="/img/before-screen.webp" alt="Phone screen cracked before repair" loading="lazy" width="1200" height="720"></div>
+              <div class="ba-after" style="width:50%"><img src="/img/after-screen.webp" alt="Phone after repair with new display" loading="lazy" width="1200" height="720"></div>
+              <div class="ba-handle" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"><i class="bi bi-arrows-left-right"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews / Social proof -->
+    <section id="reviews" class="py-5">
+      <div class="container">
+        <h2>Customer Reviews</h2>
+        <div class="row g-4 mt-3">
+          <div class="col-md-4">
+            <div class="card p-3">
+              <div class="d-flex gap-3 align-items-start">
+                <img src="/img/face.webp" alt="Customer Tharindu" loading="lazy" width="64" height="64" class="rounded-circle">
+                <div>
+                  <p class="mb-1"><strong>Tharindu</strong></p>
+                  <p class="muted mb-0">“Best repair shop in Dambulla! Fixed my Redmi display in under 30 minutes.”</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3">
+              <div class="d-flex gap-3 align-items-start">
+                <img src="/img/face.webp" alt="Customer Nadeesha" loading="lazy" width="64" height="64" class="rounded-circle">
+                <div>
+                  <p class="mb-1"><strong>Nadeesha</strong></p>
+                  <p class="muted mb-0">“Affordable and trustworthy. Got my Samsung battery replaced with warranty.”</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3">
+              <div class="d-flex gap-3 align-items-start">
+                <img src="/img/face.webp" alt="Customer Kasun" loading="lazy" width="64" height="64" class="rounded-circle">
+                <div>
+                  <p class="mb-1"><strong>Kasun</strong></p>
+                  <p class="muted mb-0">“Highly recommend RedFix. Great service and friendly staff.”</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Placeholder for embedded Google Reviews / Facebook plugin -->
+        <div class="mt-4">
+          <small class="muted">Want to show live Google Reviews? Add the Google My Business reviews widget or embed Facebook reviews here for dynamic trust signals.</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog / Tips (SEO content) -->
+    <section id="blog" class="py-5 bg-light">
+      <div class="container">
+        <h2>Phone Care Tips & Blog</h2>
+        <p class="muted">Helpful guides that keep your phone healthy. Fresh content helps our community — and improves search rankings.</p>
+        <div class="row g-4 mt-3">
+          <div class="col-md-4">
+            <article class="card p-3 blog-card">
+              <img src="/img/battery-repair-sinhala.png" alt="Extend phone battery life" loading="lazy" class="w-100 mb-3">
+              <h5>5 Tips to Extend Your Phone Battery Life</h5>
+              <p class="muted">Small changes to charging can add months to battery life.</p>
+              <a href="/blog/extend-battery-life" class="muted">Read more →</a>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="card p-3 blog-card">
+              <img src="/img/water-damage.jpg" alt="What to do if your phone gets wet" loading="lazy" class="w-100 mb-3">
+              <h5>What To Do If Your Phone Gets Wet</h5>
+              <p class="muted">Quick steps to improve rescue chances after water damage.</p>
+              <a href="/blog/phone-wet" class="muted">Read more →</a>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="card p-3 blog-card">
+              <img src="/img/display-repair-sinhala.png" alt="Signs you need a new display" loading="lazy" class="w-100 mb-3">
+              <h5>Signs You Need a New Display</h5>
+              <p class="muted">How to tell if your screen needs replacement or just repair.</p>
+              <a href="/blog/replace-display" class="muted">Read more →</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ (visible + schema) -->
+    <section id="faq" class="py-5">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="accordion mt-3" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeading1">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                How long does a repair take?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Most repairs take 30–60 minutes depending on the service and parts availability.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeading2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                Do you provide a warranty?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes — warranty is provided for display, battery and accessory replacements (terms apply).</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeading3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                Do I need an appointment?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">No — walk-ins are welcome. To guarantee same-day service, call ahead or use the booking form.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Booking Form -->
+    <section id="contact" class="py-5 bg-light">
+      <div class="container">
+        <h2>Contact & Book Repair</h2>
+        <div class="row g-4 mt-3">
+          <div class="col-lg-6">
+            <div class="card p-4">
+              <h5>Get in touch</h5>
+              <p class="muted mb-2"><strong>Address:</strong> Kandalama Rd, Athuparayaya, Dambulla, Sri Lanka</p>
+              <p class="muted mb-2"><strong>Phone:</strong> <a href="tel:+94789274648">+94 78 927 4648</a></p>
+              <p class="muted mb-2"><strong>Email:</strong> <a href="mailto:redfix.lk@gmail.com">redfix.lk@gmail.com</a></p>
+              <div class="map mt-3">
+                <iframe loading="lazy" title="RedFix map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22357.334396250968!2d80.66131965470524!3d7.8682904531851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afca56c10c7852d%3A0x8dc0c8ad90ad4428!2sRedFix!5e0!3m2!1sen!2slk!4v1756868649902!5m2!1sen!2slk" width="100%" height="220" style="border:0;border-radius:12px" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <form class="card p-4" method="post" action="/send-contact" id="contactForm" novalidate>
+              <h5>Book a Repair / Message Us</h5>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name *</label>
+                <input id="name" name="name" required class="form-control" placeholder="Your full name">
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone *</label>
+                <input id="phone" name="phone" type="tel" required class="form-control" placeholder="+94 7x xxx xxxx">
+              </div>
+              <div class="mb-3">
+                <label for="service" class="form-label">Service</label>
+                <select id="service" name="service" class="form-select">
+                  <option>Display Replacement</option>
+                  <option>Battery Replacement</option>
+                  <option>Software & Unlocking</option>
+                  <option>Accessory Purchase</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" rows="3" class="form-control" placeholder="Describe the issue or preferred booking time"></textarea>
+              </div>
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-cta">Send Message</button>
+                <button type="button" class="btn btn-ghost" onclick="location.href='tel:+94789274648'">Call Now</button>
+              </div>
+              <p class="muted mt-2 small">We will contact you to confirm the booking. By submitting you agree to our terms.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 RedFix. All Rights Reserved.</p>
+    <div class="container text-center">
+      <p class="mb-1">&copy; <span id="year"></span> RedFix. All Rights Reserved.</p>
+      <div class="mb-2">
+        <a href="https://facebook.com/RedFixLK" target="_blank" rel="noopener"><i class="bi bi-facebook fs-4 me-2"></i></a>
+        <a href="https://instagram.com/RedFixLK" target="_blank" rel="noopener"><i class="bi bi-instagram fs-4 me-2"></i></a>
+        <a href="https://wa.me/94789274648" target="_blank" rel="noopener"><i class="bi bi-whatsapp fs-4"></i></a>
+      </div>
+      <small class="muted">Designed with Love by DILU. <a href="/privacy" class="text-white">Privacy</a> • <a href="/terms" class="text-white">Terms</a></small>
+    </div>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Sticky WhatsApp CTA -->
+  <a class="whatsapp-cta" href="https://wa.me/94789274648" target="_blank" aria-label="Chat on WhatsApp"><i class="bi bi-whatsapp fs-4"></i></a>
+
+  <!-- JS (defer heavy work) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple before/after handle logic
+    (function(){
+      const wrap = document.getElementById('ba1');
+      if(!wrap) return;
+      const after = wrap.querySelector('.ba-after');
+      const handle = wrap.querySelector('.ba-handle');
+
+      let dragging = false;
+      const startDrag = (e) => { dragging = true; };
+      const stopDrag = () => { dragging = false; };
+      const move = (e) => {
+        if(!dragging) return;
+        const rect = wrap.getBoundingClientRect();
+        const clientX = (e.touches ? e.touches[0].clientX : e.clientX);
+        let pct = (clientX - rect.left) / rect.width;
+        pct = Math.max(0, Math.min(1, pct));
+        after.style.width = (pct * 100) + '%';
+        handle.style.left = `calc(${pct * 100}% - 18px)`;
+        handle.setAttribute('aria-valuenow', Math.round(pct*100));
+      }
+
+      // mouse events
+      handle.addEventListener('mousedown', startDrag);
+      window.addEventListener('mouseup', stopDrag);
+      window.addEventListener('mousemove', move);
+
+      // touch events
+      handle.addEventListener('touchstart', startDrag, {passive:true});
+      window.addEventListener('touchend', stopDrag);
+      window.addEventListener('touchmove', move, {passive:true});
+
+      // keyboard accessibility (left/right)
+      handle.addEventListener('keydown', (e)=>{
+        let v = parseInt(handle.getAttribute('aria-valuenow') || 50,10);
+        if(e.key === 'ArrowLeft'){ v = Math.max(0, v-5); }
+        if(e.key === 'ArrowRight'){ v = Math.min(100, v+5); }
+        after.style.width = v + '%';
+        handle.style.left = `calc(${v}% - 18px)`;
+        handle.setAttribute('aria-valuenow', v);
+      });
+
+    })();
+
+    // Contact form small client-side validation & graceful message (backend required)
+    (function(){
+      const form = document.getElementById('contactForm');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        // basic validation
+        const name = form.querySelector('#name').value.trim();
+        const phone = form.querySelector('#phone').value.trim();
+        if(!name || !phone){
+          e.preventDefault();
+          alert('Please enter your name and phone number so we can contact you.');
+          return false;
+        }
+        // optionally show a small UI feedback (server must handle actual sending)
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        // let server respond normally — no AJAX here
+      });
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data: LocalBusiness, FAQ, ReviewAggregate -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "RedFix",
+    "image": "https://redfix.lk/img/logo.png",
+    "@id": "https://redfix.lk/",
+    "url": "https://redfix.lk/",
+    "telephone": "+94 78 927 4648",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kandalama Rd, Athuparayaya",
+      "addressLocality": "Dambulla",
+      "addressRegion": "Central Province",
+      "addressCountry": "LK"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 7.8682904531851, "longitude": 80.66131965470524 },
+    "priceRange": "₨",
+    "openingHours": ["Mo-Sa 09:00-18:00"],
+    "sameAs": [
+      "https://www.facebook.com/yourpage",
+      "https://www.instagram.com/yourpage",
+      "https://wa.me/94789274648"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "124"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does a repair take?",
+        "acceptedAnswer": {"@type":"Answer","text":"Most repairs take 30–60 minutes depending on the service and parts availability."}
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide a warranty?",
+        "acceptedAnswer": {"@type":"Answer","text":"Yes — warranty is provided for display, battery and accessory replacements (terms apply)."}
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need an appointment?",
+        "acceptedAnswer": {"@type":"Answer","text":"No — walk-ins are welcome. To guarantee same-day service, call ahead or use the booking form."}
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Review",
+    "itemReviewed":{"@type":"LocalBusiness","name":"RedFix"},
+    "author":{"@type":"Person","name":"Tharindu"},
+    "reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},
+    "reviewBody":"Best repair shop in Dambulla! Fixed my Redmi display in under 30 minutes."
+  }
+  </script>
 
 </body>
 </html>
