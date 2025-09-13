@@ -42,65 +42,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="style.css">
 
-  <style>
-    :root{
-      --brand-1:#2E5077;
-      --brand-2:#4DA1A9;
-      --accent:#79D7BE;
-      --muted:#f6f6f6;
-      --radius:14px;
-    }
-    html,body{height:100%}
-    body{
-      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      line-height:1.5;
-      color:#222;
-      -webkit-font-smoothing:antialiased;
-      scroll-behavior:smooth;
-      background:#fff;
-    }
-    /* NAV */
-    .navbar{background:var(--brand-1)}
-    .navbar .nav-link{color:#fff !important;font-weight:600}
-    .navbar .nav-link:hover{color:var(--accent) !important}
-    .navbar-brand{color:#fff;font-weight:800}
-    /* HERO */
-    header.hero{
-      background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
-      color:#fff;padding:4.5rem 1rem;text-align:center;
-      border-bottom-left-radius:40px;border-bottom-right-radius:40px;
-    }
-    header.hero h1{font-size:2.6rem;font-weight:800}
-    header.hero p{font-size:1.125rem;margin-bottom:1.25rem}
-    .btn-cta{background:var(--accent);color:var(--brand-1);border-radius:50px;padding:.7rem 1.4rem;font-weight:700}
-    .btn-ghost{background:transparent;border:2px solid rgba(255,255,255,.18);color:#fff;border-radius:50px;padding:.55rem 1.2rem}
-    /* OFFER BAR */
-    .offer-bar{background:linear-gradient(90deg,#ffd54a,#ff8a65);color:#111;padding:.6rem;font-weight:700;border-radius:10px}
-    /* CARDS */
-    .card{border-radius:var(--radius);box-shadow:0 8px 30px rgba(46,80,119,0.06)}
-    /* Trust badges */
-    .badge-trust{background:#fff;border-radius:12px;padding:.6rem 1rem;display:inline-flex;align-items:center;gap:.6rem;border:1px solid rgba(0,0,0,.06)}
-    /* Before/After */
-    .ba-wrap{position:relative;border-radius:var(--radius);overflow:hidden;min-height:240px}
-    .ba-after{position:absolute;top:0;left:0;bottom:0;width:50%;overflow:hidden}
-    .ba-after img{height:100%;width:100%;object-fit:cover}
-    .ba-before img{height:100%;width:100%;object-fit:cover}
-    .ba-handle{position:absolute;left:calc(50% - 18px);top:50%;transform:translateY(-50%);z-index:5;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;border:2px solid rgba(0,0,0,.08)}
-    /* Sticky CTA */
-    .whatsapp-cta{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 22px rgba(37,211,102,.12);z-index:9999}
-    /* Blog preview */
-    .blog-card img{height:160px;object-fit:cover;border-radius:10px}
-    /* Footer */
-    footer{background:var(--brand-1);color:#fff;padding:2rem 1rem}
-    footer a{color:var(--accent);text-decoration:none}
-    /* Responsive */
-    @media(min-width:992px){
-      header.hero{padding:6.5rem 1rem}
-      header.hero h1{font-size:3.2rem}
-    }
-    /* Small utilities */
-    .muted{color:#6b6b6b}
-  </style>
 </head>
 <body>
   <!-- NAV -->
@@ -286,7 +227,42 @@
 
         <!-- Placeholder for embedded Google Reviews / Facebook plugin -->
         <div class="mt-4">
-          <small class="muted">Want to show live Google Reviews? Add the Google My Business reviews widget or embed Facebook reviews here for dynamic trust signals.</small>
+          <!-- ================= Google Reviews Section ================= -->
+<section class="reviews-section py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-4">What Our Customers Say</h2>
+    <div class="review-widget mx-auto">
+      <iframe 
+        src="https://search.google.com/local/reviews?placeid=ChIJLYXHEGyl_DoRKEStkK3IwI0"
+        width="100%" 
+        height="400" 
+        style="border:0;" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ================= Google Review Widget ================= */
+.reviews-section {
+  background: #f8f9fa; /* Bootstrap light background */
+}
+
+.reviews-section h2 {
+  color: #2E5077; /* your theme color */
+}
+
+.review-widget {
+  max-width: 700px;
+  border: 2px solid #e9ecef;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+</style>
+
         </div>
       </div>
     </section>
@@ -384,35 +360,7 @@
           </div>
 
           <div class="col-lg-6">
-            <form class="card p-4" method="post" action="/send-contact" id="contactForm" novalidate>
-              <h5>Book a Repair / Message Us</h5>
-              <div class="mb-3">
-                <label for="name" class="form-label">Name *</label>
-                <input id="name" name="name" required class="form-control" placeholder="Your full name">
-              </div>
-              <div class="mb-3">
-                <label for="phone" class="form-label">Phone *</label>
-                <input id="phone" name="phone" type="tel" required class="form-control" placeholder="+94 7x xxx xxxx">
-              </div>
-              <div class="mb-3">
-                <label for="service" class="form-label">Service</label>
-                <select id="service" name="service" class="form-select">
-                  <option>Display Replacement</option>
-                  <option>Battery Replacement</option>
-                  <option>Software & Unlocking</option>
-                  <option>Accessory Purchase</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea id="message" name="message" rows="3" class="form-control" placeholder="Describe the issue or preferred booking time"></textarea>
-              </div>
-              <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-cta">Send Message</button>
-                <button type="button" class="btn btn-ghost" onclick="location.href='tel:+94789274648'">Call Now</button>
-              </div>
-              <p class="muted mt-2 small">We will contact you to confirm the booking. By submitting you agree to our terms.</p>
-            </form>
+            <!--Contact forum-->>
           </div>
         </div>
       </div>
@@ -453,72 +401,8 @@ slider.addEventListener('dblclick', () => {
   imgAfter.style.clipPath = 'inset(0px 0px 0px 50%';
 });</script>
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Simple before/after handle logic
-    (function(){
-      const wrap = document.getElementById('ba1');
-      if(!wrap) return;
-      const after = wrap.querySelector('.ba-after');
-      const handle = wrap.querySelector('.ba-handle');
-
-      let dragging = false;
-      const startDrag = (e) => { dragging = true; };
-      const stopDrag = () => { dragging = false; };
-      const move = (e) => {
-        if(!dragging) return;
-        const rect = wrap.getBoundingClientRect();
-        const clientX = (e.touches ? e.touches[0].clientX : e.clientX);
-        let pct = (clientX - rect.left) / rect.width;
-        pct = Math.max(0, Math.min(1, pct));
-        after.style.width = (pct * 100) + '%';
-        handle.style.left = `calc(${pct * 100}% - 18px)`;
-        handle.setAttribute('aria-valuenow', Math.round(pct*100));
-      }
-
-      // mouse events
-      handle.addEventListener('mousedown', startDrag);
-      window.addEventListener('mouseup', stopDrag);
-      window.addEventListener('mousemove', move);
-
-      // touch events
-      handle.addEventListener('touchstart', startDrag, {passive:true});
-      window.addEventListener('touchend', stopDrag);
-      window.addEventListener('touchmove', move, {passive:true});
-
-      // keyboard accessibility (left/right)
-      handle.addEventListener('keydown', (e)=>{
-        let v = parseInt(handle.getAttribute('aria-valuenow') || 50,10);
-        if(e.key === 'ArrowLeft'){ v = Math.max(0, v-5); }
-        if(e.key === 'ArrowRight'){ v = Math.min(100, v+5); }
-        after.style.width = v + '%';
-        handle.style.left = `calc(${v}% - 18px)`;
-        handle.setAttribute('aria-valuenow', v);
-      });
-
-    })();
-
-    // Contact form small client-side validation & graceful message (backend required)
-    (function(){
-      const form = document.getElementById('contactForm');
-      if(!form) return;
-      form.addEventListener('submit', function(e){
-        // basic validation
-        const name = form.querySelector('#name').value.trim();
-        const phone = form.querySelector('#phone').value.trim();
-        if(!name || !phone){
-          e.preventDefault();
-          alert('Please enter your name and phone number so we can contact you.');
-          return false;
-        }
-        // optionally show a small UI feedback (server must handle actual sending)
-        const btn = form.querySelector('button[type="submit"]');
-        btn.disabled = true;
-        btn.textContent = 'Sending...';
-        // let server respond normally — no AJAX here
-      });
-    })();
+      // Year
+    document.getElementById('year').textContent = new Date().getFullYear();   
   </script>
 
   <!-- JSON-LD Structured Data: LocalBusiness, FAQ, ReviewAggregate -->
