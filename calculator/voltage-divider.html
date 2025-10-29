@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Voltage Divider Calculator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #4361ee;
+        --secondary: #3a0ca3;
+        --accent: #f72585;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --success: #4cc9f0;
+        --warning: #ffd166;
+        --danger: #ef476f;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        padding-top: 20px;
+        padding-bottom: 50px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .calculator-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin-bottom: 30px;
+      }
+
+      .calculator-header {
+        background: var(--primary);
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .calculator-body {
+        padding: 25px;
+      }
+
+      .calculator-body .circuit-svg {
+        display: inline-block;
+        min-height: 308px;
+      }
+
+      .input-group-text {
+        background: var(--secondary);
+        color: white;
+        border: none;
+        min-width: 80px;
+      }
+
+      .form-control,
+      .form-select {
+        border: 2px solid #dee2e6;
+        transition: all 0.3s;
+      }
+
+      .form-control:focus,
+      .form-select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+      }
+
+      .result-box {
+        background: var(--light);
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 20px;
+        border-left: 4px solid var(--success);
+        transition: all 0.3s;
+      }
+
+      .circuit-container {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .circuit-svg {
+        width: 100%;
+        height: 200px;
+      }
+
+      .resistor {
+        fill: none;
+        stroke: #ff9e00;
+        stroke-width: 3;
+      }
+
+      .wire {
+        fill: none;
+        stroke: #212529;
+        stroke-width: 2;
+      }
+
+      .connection {
+        fill: #212529;
+      }
+
+      .input-highlight {
+        animation: highlight 1.5s ease;
+      }
+
+      @keyframes highlight {
+        0% {
+          background-color: rgba(67, 97, 238, 0.2);
+        }
+        100% {
+          background-color: transparent;
+        }
+      }
+
+      .btn-calculate {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: all 0.3s;
+      }
+
+      .btn-calculate:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+      }
+
+      .error-message {
+        color: var(--danger);
+        font-weight: 500;
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background: rgba(239, 71, 111, 0.1);
+      }
+
+      .value-label {
+        font-weight: bold;
+        fill: var(--primary);
+        font-size: 12px;
+      }
+
+      .unit-label {
+        fill: #6c757d;
+        font-size: 10px;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 30px;
+        color: #6c757d;
+        font-size: 0.9rem;
+      }
+
+      .unit-select {
+        width: 90px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .input-with-unit {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .info-badge {
+        cursor: pointer;
+        font-size: 0.8rem;
+      }
+
+      .formula-box {
+        background: rgba(67, 97, 238, 0.1);
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="calculator-card">
+            <div class="calculator-header">
+              <h2>
+                <i class="fas fa-bolt me-2"></i>Advanced Voltage Divider
+                Calculator
+              </h2>
+              <p class="mb-0">
+                Calculate output voltage with support for different resistance
+                units
+              </p>
+            </div>
+
+            <div class="calculator-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4 class="mb-4">Input Parameters</h4>
+
+                  <div class="mb-3">
+                    <label class="form-label"
+                      >Input Voltage (V<sub>in</sub>)</label
+                    >
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="fas fa-bolt"></i
+                      ></span>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="voltageIn"
+                        placeholder="Enter voltage"
+                        step="0.1"
+                        min="0"
+                        value="12"
+                      />
+                      <span class="input-group-text">V</span>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label"
+                      >Resistor 1 (R<sub>1</sub>)
+                      <span
+                        class="info-badge text-primary"
+                        data-bs-toggle="tooltip"
+                        title="The upper resistor in the voltage divider circuit"
+                        >ⓘ</span
+                      >
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="fas fa-resistor"></i
+                      ></span>
+                      <input
+                        type="number"
+                        class="form-control input-with-unit"
+                        id="resistor1"
+                        placeholder="Enter resistance"
+                        step="0.1"
+                        min="0"
+                        value="1"
+                      />
+                      <select class="form-select unit-select" id="unit1">
+                        <option value="1">Ω</option>
+                        <option value="1000" selected>kΩ</option>
+                        <option value="1000000">MΩ</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label"
+                      >Resistor 2 (R<sub>2</sub>)
+                      <span
+                        class="info-badge text-primary"
+                        data-bs-toggle="tooltip"
+                        title="The lower resistor in the voltage divider circuit"
+                        >ⓘ</span
+                      >
+                    </label>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="fas fa-resistor"></i
+                      ></span>
+                      <input
+                        type="number"
+                        class="form-control input-with-unit"
+                        id="resistor2"
+                        placeholder="Enter resistance"
+                        step="0.1"
+                        min="0"
+                        value="1"
+                      />
+                      <select class="form-select unit-select" id="unit2">
+                        <option value="1">Ω</option>
+                        <option value="1000" selected>kΩ</option>
+                        <option value="1000000">MΩ</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-calculate" id="calculateBtn">
+                      <i class="fas fa-calculator me-2"></i>Calculate
+                    </button>
+                  </div>
+
+                  <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    <span id="errorText"></span>
+                  </div>
+
+                  <div class="result-box">
+                    <h5>Output Voltage</h5>
+                    <h2 id="outputVoltage">6.00 V</h2>
+                    <p class="mb-0 text-muted">
+                      V<sub>out</sub> = V<sub>in</sub> × [R<sub>2</sub> / (R<sub
+                        >1</sub
+                      >
+                      + R<sub>2</sub>)]
+                    </p>
+                  </div>
+
+                  <div class="formula-box">
+                    <h5>Formula</h5>
+                    <p class="mb-1">
+                      The output voltage is calculated using the formula:
+                    </p>
+                    <p class="mb-1">
+                      V<sub>out</sub> = V<sub>in</sub> × [R<sub>2</sub> / (R<sub
+                        >1</sub
+                      >
+                      + R<sub>2</sub>)]
+                    </p>
+                    <p class="mb-0 mt-2">Where:</p>
+                    <ul class="mb-0">
+                      <li>V<sub>in</sub> is the input voltage</li>
+                      <li>R<sub>1</sub> is the first resistor</li>
+                      <li>R<sub>2</sub> is the second resistor</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <h4 class="mb-4">Circuit Diagram</h4>
+                  <div class="circuit-container">
+                    <svg
+                      class="circuit-svg"
+                      viewBox="0 0 300 200"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <!-- Voltage Source -->
+                      <circle
+                        cx="50"
+                        cy="100"
+                        r="15"
+                        fill="none"
+                        stroke="#212529"
+                        stroke-width="2"
+                      />
+                      <text
+                        x="50"
+                        y="100"
+                        text-anchor="middle"
+                        dy="0.3em"
+                        font-size="12"
+                      >
+                        V
+                      </text>
+                      <text
+                        x="50"
+                        y="100"
+                        text-anchor="middle"
+                        dy="1.5em"
+                        font-size="10"
+                      >
+                        in
+                      </text>
+
+                      <!-- Wires -->
+                      <line x1="65" y1="100" x2="80" y2="100" class="wire" />
+                      <line x1="140" y1="100" x2="160" y2="100" class="wire" />
+                      <line x1="220" y1="100" x2="250" y2="100" class="wire" />
+                      <line x1="80" y1="100" x2="80" y2="70" class="wire" />
+                      <line x1="80" y1="130" x2="80" y2="160" class="wire" />
+                      <line x1="220" y1="100" x2="220" y2="70" class="wire" />
+                      <line x1="220" y1="130" x2="220" y2="160" class="wire" />
+                      <line x1="80" y1="70" x2="220" y2="70" class="wire" />
+                      <line x1="80" y1="160" x2="220" y2="160" class="wire" />
+
+                      <!-- Resistor 1 -->
+                      <path
+                        d="M80 70 L90 70 L100 60 L120 80 L140 60 L160 80 L180 60 L200 80 L210 70 L220 70"
+                        class="resistor"
+                      />
+                      <text
+                        x="150"
+                        y="50"
+                        text-anchor="middle"
+                        class="value-label"
+                        id="r1-label"
+                      >
+                        R₁
+                      </text>
+                      <text
+                        x="150"
+                        y="65"
+                        text-anchor="middle"
+                        class="unit-label"
+                        id="r1-value"
+                      >
+                        1kΩ
+                      </text>
+
+                      <!-- Resistor 2 -->
+                      <path
+                        d="M80 160 L90 160 L100 150 L120 170 L140 150 L160 170 L180 150 L200 170 L210 160 L220 160"
+                        class="resistor"
+                      />
+                      <text
+                        x="150"
+                        y="190"
+                        text-anchor="middle"
+                        class="value-label"
+                        id="r2-label"
+                      >
+                        R₂
+                      </text>
+                      <text
+                        x="150"
+                        y="205"
+                        text-anchor="middle"
+                        class="unit-label"
+                        id="r2-value"
+                      >
+                        1kΩ
+                      </text>
+
+                      <!-- Output Voltage -->
+                      <circle
+                        cx="250"
+                        cy="100"
+                        r="15"
+                        fill="none"
+                        stroke="#212529"
+                        stroke-width="2"
+                      />
+                      <text x="250" y="95" text-anchor="middle" font-size="12">
+                        V
+                      </text>
+                      <text x="250" y="110" text-anchor="middle" font-size="12">
+                        out
+                      </text>
+
+                      <!-- Input Voltage Label -->
+                      <text
+                        x="30"
+                        y="80"
+                        text-anchor="middle"
+                        class="value-label"
+                        id="vin-label"
+                      >
+                        V_in
+                      </text>
+                      <text
+                        x="30"
+                        y="95"
+                        text-anchor="middle"
+                        class="unit-label"
+                        id="vin-value"
+                      >
+                        12V
+                      </text>
+
+                      <!-- Output Voltage Label -->
+                      <text
+                        x="270"
+                        y="80"
+                        text-anchor="middle"
+                        class="value-label"
+                        id="vout-label"
+                      >
+                        V_out
+                      </text>
+                      <text
+                        x="270"
+                        y="95"
+                        text-anchor="middle"
+                        class="unit-label"
+                        id="vout-value"
+                      >
+                        6.00V
+                      </text>
+                    </svg>
+                  </div>
+
+                  <div class="mt-4">
+                    <h5>How to Use</h5>
+                    <div class="list-group">
+                      <div class="list-group-item">
+                        <i class="fas fa-1 me-2 text-primary"></i>
+                        Enter the input voltage (Vin)
+                      </div>
+                      <div class="list-group-item">
+                        <i class="fas fa-2 me-2 text-primary"></i>
+                        Enter values and select units for both resistors
+                      </div>
+                      <div class="list-group-item">
+                        <i class="fas fa-3 me-2 text-primary"></i>
+                        The output voltage will be calculated automatically
+                      </div>
+                      <div class="list-group-item">
+                        <i class="fas fa-4 me-2 text-primary"></i>
+                        Results are displayed both numerically and on the
+                        circuit diagram
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4">
+                    <h5>Unit Conversion</h5>
+                    <table class="table table-sm">
+                      <thead>
+                        <tr>
+                          <th>Unit</th>
+                          <th>Symbol</th>
+                          <th>Value in Ohms</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Ohm</td>
+                          <td>Ω</td>
+                          <td>1 Ω</td>
+                        </tr>
+                        <tr>
+                          <td>Kiloohm</td>
+                          <td>kΩ</td>
+                          <td>1,000 Ω</td>
+                        </tr>
+                        <tr>
+                          <td>Megaohm</td>
+                          <td>MΩ</td>
+                          <td>1,000,000 Ω</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer>
+            <p>
+              Advanced Voltage Divider Calculator © 2023 | Created with
+              <i class="fas fa-heart text-danger"></i> for electronics
+              enthusiasts
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize tooltips
+        const tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        const voltageInInput = document.getElementById("voltageIn");
+        const resistor1Input = document.getElementById("resistor1");
+        const resistor2Input = document.getElementById("resistor2");
+        const unit1Select = document.getElementById("unit1");
+        const unit2Select = document.getElementById("unit2");
+        const calculateBtn = document.getElementById("calculateBtn");
+        const outputVoltage = document.getElementById("outputVoltage");
+        const errorMessage = document.getElementById("errorMessage");
+        const errorText = document.getElementById("errorText");
+
+        // Circuit diagram labels
+        const vinValue = document.getElementById("vin-value");
+        const r1Value = document.getElementById("r1-value");
+        const r2Value = document.getElementById("r2-value");
+        const voutValue = document.getElementById("vout-value");
+
+        // Add event listeners for auto-calculation
+        voltageInInput.addEventListener("input", calculateVoltage);
+        resistor1Input.addEventListener("input", calculateVoltage);
+        resistor2Input.addEventListener("input", calculateVoltage);
+        unit1Select.addEventListener("change", calculateVoltage);
+        unit2Select.addEventListener("change", calculateVoltage);
+        calculateBtn.addEventListener("click", calculateVoltage);
+
+        function calculateVoltage() {
+          // Reset error message
+          errorMessage.style.display = "none";
+
+          // Get input values
+          const vin = parseFloat(voltageInInput.value);
+          const r1 = parseFloat(resistor1Input.value);
+          const r2 = parseFloat(resistor2Input.value);
+          const unit1 = parseFloat(unit1Select.value);
+          const unit2 = parseFloat(unit2Select.value);
+
+          // Validate inputs
+          if (isNaN(vin) || isNaN(r1) || isNaN(r2)) {
+            showError("Please enter valid numbers for all fields");
+            return;
+          }
+
+          if (vin < 0 || r1 < 0 || r2 < 0) {
+            showError("Values cannot be negative");
+            return;
+          }
+
+          if (r1 * unit1 === 0 && r2 * unit2 === 0) {
+            showError("Both resistors cannot be zero");
+            return;
+          }
+
+          // Convert resistors to ohms for calculation
+          const r1Ohms = r1 * unit1;
+          const r2Ohms = r2 * unit2;
+
+          // Calculate output voltage
+          const vout = vin * (r2Ohms / (r1Ohms + r2Ohms));
+
+          // Display result
+          outputVoltage.textContent = vout.toFixed(2) + " V";
+
+          // Update circuit diagram
+          updateCircuitDiagram(vin, r1, r2, unit1, unit2, vout);
+
+          // Highlight the input fields
+          voltageInInput.classList.add("input-highlight");
+          resistor1Input.classList.add("input-highlight");
+          resistor2Input.classList.add("input-highlight");
+
+          // Remove highlight after animation completes
+          setTimeout(() => {
+            voltageInInput.classList.remove("input-highlight");
+            resistor1Input.classList.remove("input-highlight");
+            resistor2Input.classList.remove("input-highlight");
+          }, 1500);
+        }
+
+        function showError(message) {
+          errorText.textContent = message;
+          errorMessage.style.display = "block";
+          outputVoltage.textContent = "0.00 V";
+
+          // Reset circuit diagram
+          updateCircuitDiagram(0, 0, 0, 1, 1, 0);
+        }
+
+        function updateCircuitDiagram(vin, r1, r2, unit1, unit2, vout) {
+          vinValue.textContent = vin + "V";
+
+          // Format resistor values with appropriate units
+          const r1ValueText = formatResistance(r1, unit1);
+          const r2ValueText = formatResistance(r2, unit2);
+
+          r1Value.textContent = r1ValueText;
+          r2Value.textContent = r2ValueText;
+          voutValue.textContent = vout.toFixed(2) + "V";
+        }
+
+        function formatResistance(value, unit) {
+          if (unit === 1000000) {
+            return value + "MΩ";
+          } else if (unit === 1000) {
+            return value + "kΩ";
+          } else {
+            return value + "Ω";
+          }
+        }
+
+        // Initialize with example values
+        calculateVoltage();
+      });
+    </script>
+  </body>
+</html>
