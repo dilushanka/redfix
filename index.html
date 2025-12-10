@@ -180,7 +180,7 @@
     <img src="/img/after-screen.webp" alt="After">
   </div>
   <div id="line"></div>
-  <input id="slider" type="range" min="0" max="100" value="50">
+  <input id="slider" type="range" min="0" max="100" value="50" title="Before and after image slider">
 </div>
       </div></center>
     </section>
@@ -354,7 +354,7 @@
               <p class="muted mb-2"><strong>Phone:</strong> <a href="tel:+94789274648">+94 78 927 4648</a></p>
               <p class="muted mb-2"><strong>Email:</strong> <a href="mailto:redfix.lk@gmail.com">redfix.lk@gmail.com</a></p>
               <div class="map mt-3">
-                <iframe loading="lazy" title="RedFix map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22357.334396250968!2d80.66131965470524!3d7.8682904531851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afca56c10c7852d%3A0x8dc0c8ad90ad4428!2sRedFix!5e0!3m2!1sen!2slk!4v1756868649902!5m2!1sen!2slk" width="100%" height="220" style="border:0;border-radius:12px" allowfullscreen></iframe>
+              <iframe loading="lazy" title="RedFix location map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22357.334396250968!2d80.66131965470524!3d7.8682904531851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afca56c10c7852d%3A0x8dc0c8ad90ad4428!2sRedFix!5e0!3m2!1sen!2slk!4v1756868649902!5m2!1sen!2slk" width="100%" height="220" class="redfix-map-iframe" allowfullscreen="" style="border:0;"></iframe>
               </div>
             </div>
           </div>
@@ -381,7 +381,7 @@
   </footer>
 
   <!-- Sticky WhatsApp CTA -->
-  <a class="whatsapp-cta" href="https://wa.me/94789274648" target="_blank" aria-label="Chat on WhatsApp"><i class="bi bi-whatsapp fs-4"></i></a>
+  <a class="whatsapp-cta" href="https://wa.me/94789274648" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="bi bi-whatsapp fs-4"></i></a>
 
   <!-- JS (defer heavy work) -->
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
@@ -472,6 +472,54 @@ slider.addEventListener('dblclick', () => {
     "reviewBody":"Best repair shop in Dambulla! Fixed my Redmi display in under 30 minutes."
   }
   </script>
+<div id="site-change-popup" class="site-change-modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h3>🎉 We've Moved! 🎉</h3>
+    <p>We're excited to announce that we have launched our New Shop name!</p>
+    <p>Please update your bookmarks.</p>
+    
+    <a href="https://redfix.lk" class="new-site-button" target="_blank" rel="noopener noreferrer">
+      Go to Our New Site Now!
+    </a>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById("site-change-popup");
 
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close-button")[0];
+
+// Function to display the modal
+function showModal() {
+  // Check if the user has closed the modal before (using sessionStorage)
+  if (sessionStorage.getItem('siteChangeDismissed') !== 'true') {
+      modal.style.display = "block";
+  }
+}
+
+// When the user clicks on <span> (x), close the modal and save the choice
+span.onclick = function() {
+  modal.style.display = "none";
+  // Set a session storage item so the popup doesn't reappear on refresh
+  sessionStorage.setItem('siteChangeDismissed', 'true');
+}
+
+// When the user clicks anywhere outside of the modal, close it and save the choice
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    sessionStorage.setItem('siteChangeDismissed', 'true');
+  }
+}
+
+// Show the modal after a short delay (e.g., 1.5 seconds) to allow the page to load
+window.onload = function() {
+    setTimeout(showModal, 1500); 
+};
+</script>
+    <p class="new-url-text">New URL: <a href="https://redfix.lk" target="_blank" rel="noopener noreferrer">https://redfix.lk</a></p>
+  </div>
+</div>
 </body>
 </html>

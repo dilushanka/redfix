@@ -137,3 +137,81 @@ input:active::-webkit-slider-thumb {
 input:active::-moz-slider-thumb {
   cursor: grabbing;
 }
+/* --- Modal Background --- */
+.site-change-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* --- Modal Content Box --- */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+/* --- Close Button --- */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* --- Heading Styling --- */
+.modal-content h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    font-size: 1.8em;
+}
+
+/* --- Main Button Styling --- */
+.new-site-button {
+    display: inline-block;
+    background-color: #3498db; /* Blue color */
+    color: white;
+    padding: 12px 25px;
+    margin: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.new-site-button:hover {
+    background-color: #2980b9;
+}
+
+/* --- New URL Text Styling --- */
+.new-url-text {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    word-wrap: break-word;
+}
